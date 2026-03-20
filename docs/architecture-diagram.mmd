@@ -1,0 +1,19 @@
+flowchart LR
+  Internet[Internet] -->|HTTPS 443| ALB[ALB + WAF]
+  ALB -->|HTTP:5000| ASG[Auto Scaling Group (EC2)]
+
+  subgraph VPC[VPC (Public + Private + DB Subnets, 2 AZ)]
+    ASG -->|MySQL 3306| RDS[RDS MySQL Multi-AZ]
+    ASG -->|6379| Redis[ElastiCache Redis (Private)]
+    ASG -->|Outbound via NAT| ECR[ECR (Docker images)]
+    ASG -->|HTTPS/SDK| Secrets[Secrets Manager (DB creds)]
+    ASG -->|CloudWatch Logs| Logs[CloudWatch Logs]
+    ASG -->|PutMetricData| Metrics[CloudWatch Metrics]
+  end
+
+  ASG --> CodeDeploy[CodeDeploy updates instances in ASG]
+  GitHub[GitHub Actions] -->|build+push| ECR
+  GitHub -->|trigger| CodeDeploy
+  Metrics --> CloudWatch[CloudWatch Dashboard + Alarms]
+  CloudWatch --> SNS[SNS Alerts]
+
