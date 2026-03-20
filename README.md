@@ -1,4 +1,24 @@
-# 3-Tier HA Web Application on AWS (Terraform + CI/CD)
+# 3-Tier HA Web Application on AWS | AWS 3層 HA Webアプリケーション
+
+> Production-style 3-tier architecture built with Terraform and CI/CD automation.  
+> TerraformとCI/CDで構築したプロダクションレベルの3層アーキテクチャ。
+
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat&logo=terraform&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+
+| Layer | Technology |
+|---|---|
+| Web Tier | ALB + Auto Scaling EC2 |
+| App Tier | Python Flask + Docker + ECR |
+| Data Tier | RDS MySQL Multi-AZ + ElastiCache Redis |
+| Infrastructure | Terraform (dev + prod environments) |
+| CI/CD | GitHub Actions + CodeDeploy |
+| Security | WAF + Secrets Manager + least-privilege SGs |
+| Observability | CloudWatch metrics + alarms + structured logs |
+
 
 This repo contains a production-style 3-tier architecture:
 
