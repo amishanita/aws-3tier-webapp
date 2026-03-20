@@ -288,7 +288,4 @@ Capture and document:
 
 **amishanita** — [@amishanita](https://github.com/amishanita)
 
----
 
-*Built to demonstrate production AWS architecture patterns for portfolio and interview purposes.*
-*ポートフォリオおよび面接用に、プロダクションレベルのAWSアーキテクチャパターンを実証するために構築しました。*
